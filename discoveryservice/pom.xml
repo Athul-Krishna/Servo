@@ -8,10 +8,10 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.boolean.servo</groupId>
-	<artifactId>DiscoveryService</artifactId>
+	<groupId>com.reboot.servo</groupId>
+	<artifactId>discovery-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discoveryservice</name>
+	<name>DiscoveryService</name>
 	<description>Servo Discovery Server</description>
 	<properties>
 		<java.version>17</java.version>
