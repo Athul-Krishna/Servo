@@ -7,6 +7,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.reboot.servo.data.Level;
 import com.reboot.servo.data.UserEntity;
 import com.reboot.servo.data.UsersRepository;
 import com.reboot.servo.shared.UserDto;
@@ -26,10 +27,14 @@ public class UsersServiceImpl implements UsersService {
     public UserDto createUser(UserDto userDetails) {
         userDetails.setUserId(UUID.randomUUID().toString());
         userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+        userDetails.setLevel(Level.BASIC);
+
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
         UserEntity userEntity = modelMapper.map(userDetails, UserEntity.class);
         usersRepository.save(userEntity);
+
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
         return returnValue;
     }
